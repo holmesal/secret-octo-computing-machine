@@ -1,0 +1,13 @@
+<div class="hero-unit">
+  <input type="text" ng-model="data.name" placeholder="Pick your name">
+   {{data.name}}
+</div>
+
+<ul>
+    <li ng-repeat="event in data.events">
+        {{event.text}} ({{event.type}})
+    </li>
+</ul>
+
+
+<message></message>
