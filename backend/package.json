@@ -1,0 +1,12 @@
+{
+  "name": "realtimesteez",
+  "version": "0.0.1",
+  "description": "chyeah",
+  "main": "app.js",
+  "author": "Alonso Holmes",
+  "license": "MIT",
+  "dependencies":{
+      "express.io": "1.1.x",
+      "async":"0.2.9"
+  }
+}
