@@ -7,6 +7,8 @@
   "license": "MIT",
   "dependencies":{
       "express.io": "1.1.x",
-      "async":"0.2.9"
+      "async": "0.2.9",
+      "redis": "0.8.4",
+      "q": "0.9.x"
   }
 }
