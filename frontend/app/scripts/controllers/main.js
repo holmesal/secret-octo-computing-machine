@@ -6,7 +6,7 @@
     console.log($routeParams.room);
     $scope.data = {
       events: [],
-      name: 'Alonso'
+      name: localStorage.name
     };
     socket.on('event', function(res) {
       return $scope.data.events.push(res);
@@ -15,10 +15,17 @@
     if (room) {
       console.log('joining room: ' + room);
       socket.emit('joinRoom', {
-        room: room
+        room: room,
+        name: $scope.data.name
       });
     }
-    return $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma'];
+    return $scope.changeName = function() {
+      console.log($scope.data.name);
+      if ($scope.data.name) {
+        socket.emit('changeName', $scope.data.name);
+        return localStorage.name = $scope.data.name;
+      }
+    };
   });
 
 }).call(this);

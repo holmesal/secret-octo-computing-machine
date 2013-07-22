@@ -6,7 +6,7 @@ angular.module('realtimesteezApp')
 
     $scope.data =
       events: []
-      name: 'Alonso'
+      name: localStorage.name
 
     socket.on 'event', (res) ->
       # Add to the event queue
@@ -17,9 +17,16 @@ angular.module('realtimesteezApp')
     if room
       console.log 'joining room: '+room
       socket.emit 'joinRoom',
-        room: room
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ]
+        room:room
+        # Pass this to fix a race condition
+        name:$scope.data.name
+
+
+    # Change the name
+    $scope.changeName = ->
+      console.log $scope.data.name
+      if $scope.data.name
+        # Socket event
+        socket.emit 'changeName',$scope.data.name
+        # Update localstorage
+        localStorage.name = $scope.data.name
